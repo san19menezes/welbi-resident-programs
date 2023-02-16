@@ -31,12 +31,19 @@
   width: 60%;
   div {
     width: 90%;
+    margin: 1rem 0;
     input,
     select {
       width: 90%;
     }
     select {
       height: 2.3rem;
+    }
+    label {
+      span {
+        color: red;
+        font-size: large;
+      }
     }
   }
 }

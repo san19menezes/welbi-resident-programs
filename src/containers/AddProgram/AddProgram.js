@@ -155,11 +155,8 @@ const AddProgram = () => {
           </div>
           <div>
             <label htmlFor='hobbies'>Hobbies</label>
-            <small>
-              Please enter hobbies names separated by comma{' '}
-              <span className='required'>*</span>
-            </small>
-            <input name='hobbies' type='text' required />
+            <small>Please enter hobbies names separated by comma </small>
+            <input name='hobbies' type='text' />
           </div>
         </div>
         <div className='program-input'>

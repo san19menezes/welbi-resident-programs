@@ -32,3 +32,6 @@ export const fetchProgramsList = () => {
 export const addNewProgramToList = (data) => {
   return request({ url: '/programs', method: 'post', data: data });
 };
+export const addNewResidentToList = (data) => {
+  return request({ url: '/residents', method: 'post', data: data });
+};

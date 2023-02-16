@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { IoMdArrowBack } from 'react-icons/io';
 import Button from '../../components/Button/Button';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import {
+  addNewResidentToList,
   RESIDENT_AMBULATION,
   RESIDENT_LEVEL_OF_CARE,
   RESIDENT_STATUS,
@@ -9,38 +12,58 @@ import {
 import './AddResident.scss';
 
 const AddResident = () => {
+  let navigate = useNavigate();
+  useEffect(() => {}, []);
   const addNewResident = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    const jsonBody = {};
     for (let [key, value] of formData.entries()) {
-      console.log(key, value);
+      jsonBody[key] = value;
     }
+    jsonBody['name'] = `${jsonBody['firstName']} ${jsonBody['lastName']}`;
+    if (jsonBody['room'] === '') jsonBody['room'] = null;
+    if (jsonBody['preferredName'] === '') jsonBody['preferredName'] = null;
+    console.log(jsonBody);
+
+    addNewResidentToList(jsonBody)
+      .then((resp) => console.log(resp))
+      .catch((err) => console.log(err));
+  };
+  const routeBack = () => {
+    console.log('navigate');
+    navigate('/residents');
   };
   return (
     <div className='addResident__container page__container'>
+      <Button
+        onClick={routeBack}
+        displayText={
+          <>
+            <IoMdArrowBack /> Go back
+          </>
+        }
+      ></Button>
       <PageHeader headerName='Add a new resident' details='' />
       <form className='form__container' onSubmit={addNewResident}>
         <div className='resident-input'>
           <div>
-            <label htmlFor='firstName'>First Name</label>
-            <input name='firstName' type='text' />
+            <label htmlFor='firstName'>
+              First Name<span className='required'>*</span>
+            </label>
+            <input name='firstName' type='text' required />
           </div>
           <div>
-            <label htmlFor='lastName'>Last Name</label>
-            <input name='lastName' type='text' />
+            <label htmlFor='lastName'>
+              Last Name<span className='required'>*</span>
+            </label>
+            <input name='lastName' type='text' required />
           </div>
-        </div>
-        <div className='resident-input'>
           <div>
             <label htmlFor='preferredName'>Preferred Name</label>
             <input name='preferredName' type='text' />
           </div>
-          <div>
-            <label htmlFor='room'>Room</label>
-            <input name='room' type='text' />
-          </div>
         </div>
-
         <div className='resident-input'>
           <div>
             {' '}
@@ -76,19 +99,25 @@ const AddResident = () => {
             </select>
           </div>
           <div>
-            <label htmlFor='applicantId'>Applicant Id</label>
-            <input name='applicantId' type='text' />
+            <label htmlFor='room'>
+              Room<span className='required'>*</span>
+            </label>
+            <input name='room' type='text' />
           </div>
         </div>
 
         <div className='resident-input'>
           <div>
-            <label htmlFor='birthDate'>Date of birth</label>
-            <input name='birthDate' type='date' />
+            <label htmlFor='birthDate'>
+              Date of birth <span className='required'>*</span>
+            </label>
+            <input name='birthDate' type='date' required />
           </div>
           <div>
-            <label htmlFor='moveInDate'>Move in date</label>
-            <input name='moveInDate' type='date' />
+            <label htmlFor='moveInDate'>
+              Move in date<span className='required'>*</span>
+            </label>
+            <input name='moveInDate' type='date' required />
           </div>
         </div>
 
