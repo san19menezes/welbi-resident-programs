@@ -1,0 +1,45 @@
+.programs-list-container {
+  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 5%;
+}
+
+.programs-heading {
+  text-align: center;
+  margin: 40px 0px;
+  color: #324d67;
+  h2 {
+    font-size: 40px;
+    font-weight: 800;
+  }
+  p {
+    font-size: 16px;
+    font-weight: 200;
+  }
+}
+.add-Program-Btn {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--gray-color);
+  text-decoration: none;
+
+  font-weight: 500;
+  color: var(--white-color);
+  outline: none;
+
+  font-family: var(--font-base);
+  cursor: pointer;
+  transition: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+
+  &:hover {
+    background-color: var(--secondary-color);
+  }
+}
+.add-program-btn_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

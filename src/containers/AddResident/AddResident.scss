@@ -1,0 +1,42 @@
+.form__container {
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  input,
+  select {
+    width: 60%;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0 15px;
+    line-height: 2rem;
+    border: 1px solid #d5dae3;
+    border-radius: 7px;
+    background-color: var(--white-color) !important;
+    &:focus {
+      outline-color: var(--secondary-color);
+    }
+  }
+}
+.resident-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  div {
+    width: 90%;
+    input,
+    select {
+      width: 90%;
+    }
+    select {
+      height: 2.3rem;
+    }
+  }
+}

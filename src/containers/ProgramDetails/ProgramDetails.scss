@@ -1,0 +1,24 @@
+.program-details-page__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.program-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  div {
+    padding: 1rem 3rem;
+  }
+  p {
+    padding: 0.2rem;
+  }
+  .detail-label {
+    font-weight: 600;
+  }
+}
+.attendees-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 2rem 0;
+}
