@@ -1,8 +1,7 @@
 import React from 'react';
 import { IoMdArrowBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
-import Button from '../../components/Button/Button';
-import PageHeader from '../../components/PageHeader/PageHeader';
+import {Button, PageHeader} from '../../components';
 import { addNewProgramToList, PROGRAM_DIMENSION } from '../../utils/constants';
 import './AddProgram.scss';
 
@@ -50,7 +49,7 @@ const AddProgram = () => {
     console.log(jsonBody);
 
     addNewProgramToList(jsonBody)
-      .then((resp) => console.log(resp))
+      .then((resp) => routeBack())
       .catch((err) => console.log(err));
   };
   const routeBack = () => {
@@ -68,7 +67,7 @@ const AddProgram = () => {
         }
       ></Button>
       <PageHeader headerName='Add a new program' details='' />
-      <form className='form__container' onSubmit={addNewProgram}>
+      <form className='form__container page-border' onSubmit={addNewProgram}>
         <div className='program-input'>
           <div>
             <label htmlFor='name'>

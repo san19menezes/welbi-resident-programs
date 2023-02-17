@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from 'react-icons/io';
-import Button from '../../components/Button/Button';
-import PageHeader from '../../components/PageHeader/PageHeader';
+import { Button, PageHeader } from '../../components';
 import {
   addNewResidentToList,
   RESIDENT_AMBULATION,
@@ -27,7 +26,7 @@ const AddResident = () => {
     console.log(jsonBody);
 
     addNewResidentToList(jsonBody)
-      .then((resp) => console.log(resp))
+      .then((resp) => routeBack())
       .catch((err) => console.log(err));
   };
   const routeBack = () => {
@@ -45,7 +44,7 @@ const AddResident = () => {
         }
       ></Button>
       <PageHeader headerName='Add a new resident' details='' />
-      <form className='form__container' onSubmit={addNewResident}>
+      <form className='form__container page-border' onSubmit={addNewResident}>
         <div className='resident-input'>
           <div>
             <label htmlFor='firstName'>

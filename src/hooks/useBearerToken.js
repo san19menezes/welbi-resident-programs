@@ -7,6 +7,7 @@ function getSavedToken(key, initialToken) {
   return initialToken;
 }
 // Hook definition  to fetch and store bearer token to local storage
+// This is not used in the application as of now since we have a constant bearer token
 export function useBearerTokenFromLocalStorage(key, initialToken) {
   const [token, setToken] = useState(() => {
     return getSavedToken(key, initialToken);

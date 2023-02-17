@@ -2,7 +2,7 @@
   padding: 1rem 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin: 0 5%;
+  margin: 2% 5%;
 }
 
 .residents-heading {
@@ -22,10 +22,10 @@
   padding: 0.5rem 1rem;
   border-radius: 10px;
   border: none;
-  background-color: var(--gray-color);
+  background-color: var(--secondary-color);
   text-decoration: none;
 
-  font-weight: 500;
+  font-weight: 600;
   color: var(--white-color);
   outline: none;
 
@@ -35,12 +35,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: var(--secondary-color);
+    transform: scale(1.1);
+    transition: transform ease 0.2s;
   }
-}
-.add-resident-btn_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }

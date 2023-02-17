@@ -3,15 +3,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 5%;
+  h1 {
+    color: var(--secondary-color);
+  }
 }
 .program-details {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  border: var(--solid-border);
+  max-width: 50rem;
   div {
     padding: 1rem 3rem;
   }
   p {
     padding: 0.2rem;
+    max-width: 230px;
+    text-align: center;
   }
   .detail-label {
     font-weight: 600;
@@ -20,5 +28,12 @@
 .attendees-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin: 2rem 0;
+  margin: 1rem 0;
+}
+.program-details-image {
+  margin-top: 2%;
+}
+.attendees-header {
+  text-align: center;
+  padding: 1rem 0 0 0;
 }

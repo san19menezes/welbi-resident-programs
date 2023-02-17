@@ -23,7 +23,7 @@ const Header = () => {
             style={navLinkStyles}
             className='app__flex p-text'
             to={`/${item}`}
-            key={item}
+            key={item}            
           >
             {item}
           </NavLink>

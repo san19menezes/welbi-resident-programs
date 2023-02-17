@@ -35,3 +35,12 @@ export const addNewProgramToList = (data) => {
 export const addNewResidentToList = (data) => {
   return request({ url: '/residents', method: 'post', data: data });
 };
+
+export const getFormattedDate = (date) => {
+  let formattedDate = new Date(date).toDateString();
+  return formattedDate;
+};
+export const getFormattedTime = (date) => {
+  let formattedTime = new Date(date).toLocaleTimeString('en-US');
+  return formattedTime;
+};

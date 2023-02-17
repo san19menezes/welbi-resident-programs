@@ -1,9 +1,12 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import './ResidentDetails.scss';
 
 const ResidentDetails = () => {
-  const params = useParams();
-  return <div>Coming Soon</div>;
+  return (
+    <div className='resident-details__container page-border'>
+      <div>Coming soon!</div>
+    </div>
+  );
 };
 
 export default ResidentDetails;
