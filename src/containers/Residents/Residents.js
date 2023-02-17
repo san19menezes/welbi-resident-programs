@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { fetchResidentsList } from '../../utils/constants';
+
 import {
   ErrorPage,
   LoadingSpinner,
@@ -8,26 +8,10 @@ import {
   Resident,
 } from '../../components';
 import './Residents.scss';
+import { useAuth } from '../../utils/Auth';
 
 const Residents = () => {
-  const [residents, setResidents] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  const getAllResidents = useCallback(async () => {
-    const resp = await fetchResidentsList();
-    if (resp.data) {
-      setError(false);
-      setLoading(false);
-      setResidents(resp.data);
-    } else if (resp.name === 'AxiosError') {
-      setError(true);
-      setLoading(false);
-    }
-  }, []);
-  useEffect(() => {
-    getAllResidents();
-  }, []);
+  const { residentsList, residentsError, residentsLoading } = useAuth();
 
   return (
     <div className='residents-container page__container'>
@@ -37,12 +21,12 @@ const Residents = () => {
           + Add a new resident
         </Link>
       </div>
-      {loading && <LoadingSpinner />}
-      {error ? (
+      {residentsLoading && <LoadingSpinner />}
+      {residentsError ? (
         <ErrorPage details='Unable to load program data. Please try later.' />
       ) : (
         <div className='residents-list-container page-border'>
-          {residents.map((resident) => {
+          {residentsList.map((resident) => {
             const { id } = resident;
             return (
               <Link to={`/residents/${id}`} key={id} className='router-link'>

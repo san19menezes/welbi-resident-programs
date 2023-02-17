@@ -22,16 +22,24 @@ function App() {
     <div className='app'>
       <BrowserRouter>
         <AuthProvider>
-          <Header />
-          <Routes>
-            <Route exact path='/' element={<LazyLoadPrograms />}></Route>
-            <Route path='/programs' element={<Programs />}></Route>
-            <Route path='/programs/:id' element={<ProgramDetails />}></Route>
-            <Route path='/residents' element={<Residents />}></Route>
-            <Route path='/residents/:id' element={<ResidentDetails />}></Route>
-            <Route path='/addProgram' element={<AddProgram />}></Route>
-            <Route exact path='/addResident' element={<AddResident />}></Route>
-          </Routes>
+          <Header />          
+            <Routes>
+              <Route exact path='/' element={<LazyLoadPrograms />}></Route>
+              <Route path='/programs' element={<Programs />}></Route>
+              <Route path='/programs/:id' element={<ProgramDetails />}></Route>
+              <Route path='/residents' element={<Residents />}></Route>
+              <Route
+                path='/residents/:id'
+                element={<ResidentDetails />}
+              ></Route>
+              <Route path='/addProgram' element={<AddProgram />}></Route>
+              <Route
+                exact
+                path='/addResident'
+                element={<AddResident />}
+              ></Route>
+            </Routes>         
+
           <hr />
           <Footer />
         </AuthProvider>

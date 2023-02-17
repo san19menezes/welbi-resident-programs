@@ -23,18 +23,18 @@ const Program = ({ program }) => {
           <div>All Day Event</div>
         ) : (
           <>
-            <div style={{ display: 'flex' }}>
-              <div style={{ flex: 1, textAlign: 'right', marginRight: '1px' }}>
+            <div className='date__container'>
+              <div className='date-label'>
                 <b>Start: </b>
               </div>
-              <div style={{ flex: 3 }}>{getFormattedTime(start)}</div>
+              <div className='date-value'>{getFormattedTime(start)}</div>
             </div>
 
-            <div style={{ display: 'flex' }}>
-              <div style={{ flex: 1, textAlign: 'right', marginRight: '1px' }}>
+            <div className='date__container'>
+              <div className='date-label'>
                 <b>End: </b>
               </div>
-              <div style={{ flex: 3 }}>{getFormattedTime(end)}</div>
+              <div className='date-value'>{getFormattedTime(end)}</div>
             </div>
           </>
         )}

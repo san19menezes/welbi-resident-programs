@@ -44,3 +44,4 @@ export const getFormattedTime = (date) => {
   let formattedTime = new Date(date).toLocaleTimeString('en-US');
   return formattedTime;
 };
+

@@ -1,18 +1,22 @@
 import React from 'react';
 import { IoMdArrowBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
-import {Button, PageHeader} from '../../components';
+import { Button, PageHeader } from '../../components';
 import { addNewProgramToList, PROGRAM_DIMENSION } from '../../utils/constants';
+import { useAuth } from '../../utils/Auth';
 import './AddProgram.scss';
 
 const AddProgram = () => {
   let navigate = useNavigate();
+  const { updatePrograms } = useAuth();
 
+  // Function to add a new program
   const addNewProgram = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const jsonBody = {};
 
+    // Parse form data before API request
     for (let [key, value] of formData.entries()) {
       jsonBody[key] = value;
     }
@@ -44,18 +48,18 @@ const AddProgram = () => {
       ? (jsonBody['isRepeated'] = true)
       : (jsonBody['isRepeated'] = false);
     if (jsonBody['applicantId'] === '') jsonBody['applicantId'] = null;
-    // jsonBody['attendance'] = [];
-
-    console.log(jsonBody);
 
     addNewProgramToList(jsonBody)
       .then((resp) => routeBack())
       .catch((err) => console.log(err));
   };
+
+  // Function to route back to the parent page
   const routeBack = () => {
-    console.log('navigate');
+    updatePrograms();
     navigate('/programs');
   };
+
   return (
     <div className='addProgram__container page__container'>
       <Button

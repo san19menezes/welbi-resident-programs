@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from 'react-icons/io';
 import { Button, PageHeader } from '../../components';
@@ -8,11 +8,14 @@ import {
   RESIDENT_LEVEL_OF_CARE,
   RESIDENT_STATUS,
 } from '../../utils/constants';
+import { useAuth } from '../../utils/Auth';
 import './AddResident.scss';
 
 const AddResident = () => {
   let navigate = useNavigate();
-  useEffect(() => {}, []);
+  const { updateResidents } = useAuth();
+
+  // Function to add a new resident
   const addNewResident = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -29,10 +32,13 @@ const AddResident = () => {
       .then((resp) => routeBack())
       .catch((err) => console.log(err));
   };
+
+  // Function to route back to the parent page
   const routeBack = () => {
-    console.log('navigate');
+    updateResidents();
     navigate('/residents');
   };
+
   return (
     <div className='addResident__container page__container'>
       <Button

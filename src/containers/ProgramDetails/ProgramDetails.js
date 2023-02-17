@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from 'react-icons/io';
 import eventLogo from '../../assets/prog-details.jpg';
-import {Card, PageHeader} from '../../components';
+import { Card, PageHeader } from '../../components';
 import { useAuth } from '../../utils/Auth';
 import './ProgramDetails.scss';
-import {Button} from '../../components';
+import { Button } from '../../components';
 
 const ProgramDetails = () => {
   const { id } = useParams();
@@ -13,19 +13,25 @@ const ProgramDetails = () => {
   const navigate = useNavigate();
   const [programDetail, setProgramDetail] = useState({});
 
-  const getProgramDetails = (id) => {
-    return programsList.filter((program) => id == program.id);
-  };
+  // Filter the selected program details from context as program/{id} API call is non functional
+  const getProgramDetails = useCallback(
+    (id) => {
+      return programsList.filter((program) => id == program.id);
+    },
+    [programsList]
+  );
 
   useEffect(() => {
     const progDetail = getProgramDetails(id);
-    console.log(progDetail);
     setProgramDetail(progDetail[0]);
-  }, [id]);
+  }, [id, getProgramDetails]);
+
+  // Function to route back to the parent page
   const routeBack = () => {
     console.log('navigate');
     navigate('/programs');
   };
+
   return (
     <div className='addProgram__container page__container'>
       <Button
